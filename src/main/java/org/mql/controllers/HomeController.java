@@ -26,17 +26,17 @@ public class HomeController {
 		return "home";
 	}
 	
-	@GetMapping("/add")
-	public String add() {
-		Movie movie = buildMovie();
-		business.save(movie);
-		return "redirect:/home";
-	}
-	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable String id) {
 		ObjectId idMovie = new ObjectId(id);
 		business.delete(idMovie);
+		return "redirect:/home";
+	}
+	
+	@GetMapping("/add")
+	public String add() {
+		Movie movie = buildMovie();
+		business.save(movie);
 		return "redirect:/home";
 	}
 	
